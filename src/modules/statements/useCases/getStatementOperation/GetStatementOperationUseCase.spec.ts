@@ -22,7 +22,7 @@ describe("GetStatementOperationUseCase", () => {
     );
   });
 
-  it("you should not be able to find statement from a nonexistent user", async () => {
+  it("should not be able to find statement from a nonexistent user", async () => {
     expect(async () => {
       const user_id = "nonexistent";
       const statement_id = "nonexistent";
@@ -34,7 +34,7 @@ describe("GetStatementOperationUseCase", () => {
     }).rejects.toEqual(new GetStatementOperationError.UserNotFound());
   });
 
-  it("you should not be able to find one statement", async () => {
+  it("should not be able to find one statement", async () => {
     expect(async () => {
       const { id: user_id } = await usersRepositoryInMemory.create({
         name: "User test",
@@ -51,7 +51,7 @@ describe("GetStatementOperationUseCase", () => {
     }).rejects.toBeInstanceOf(GetStatementOperationError.StatementNotFound);
   });
 
-  it("you should be able to return one statement", async () => {
+  it("should be able to return one statement", async () => {
     const { id: user_id } = await usersRepositoryInMemory.create({
       name: "User test",
       email: "test@test.com.br",
